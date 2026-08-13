@@ -478,33 +478,320 @@ function loadProfileFromURL() {
 
 
 /* =========================================================
-   DOWNLOAD CARD
+   DOWNLOAD FRONT + BACK SIDE BY SIDE
 ========================================================= */
 
 async function downloadCard() {
 
-    showFront();
+    const front =
+        document.querySelector(".card-front");
 
+    const back =
+        document.querySelector(".card-back");
+
+    if (!front || !back) {
+
+        alert("Card faces not found.");
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------------------
+       SAVE CURRENT CARD STATE
+    ----------------------------------------------------- */
 
     const card =
-        document.getElementById(
-            "downloadCard"
-        );
+        document.getElementById("idCard");
 
-
-    const originalTransform =
-        card.style.transform;
-
-
-    card.style.transform =
-        "none";
+    const wasFlipped =
+        card.classList.contains("flipped");
 
 
     try {
 
+        /* -------------------------------------------------
+           WAIT FOR FONTS
+        ------------------------------------------------- */
+
+        if (document.fonts) {
+            await document.fonts.ready;
+        }
+
+
+        /* -------------------------------------------------
+           GET ORIGINAL CARD SIZE
+        ------------------------------------------------- */
+
+        const cardRect =
+            front.getBoundingClientRect();
+
+        const cardWidth =
+            Math.round(cardRect.width);
+
+        const cardHeight =
+            Math.round(cardRect.height);
+
+
+        /* -------------------------------------------------
+           CREATE EXPORT CONTAINER
+        ------------------------------------------------- */
+
+        const exportContainer =
+            document.createElement("div");
+
+
+        exportContainer.style.position =
+            "fixed";
+
+        exportContainer.style.left =
+            "-100000px";
+
+        exportContainer.style.top =
+            "0";
+
+        exportContainer.style.display =
+            "flex";
+
+        exportContainer.style.flexDirection =
+            "row";
+
+        exportContainer.style.alignItems =
+            "flex-start";
+
+        exportContainer.style.gap =
+            "20px";
+
+        exportContainer.style.padding =
+            "0";
+
+        exportContainer.style.margin =
+            "0";
+
+        exportContainer.style.background =
+            "transparent";
+
+        exportContainer.style.width =
+            `${cardWidth * 2 + 20}px`;
+
+        exportContainer.style.height =
+            `${cardHeight}px`;
+
+        exportContainer.style.overflow =
+            "visible";
+
+
+        /* -------------------------------------------------
+           CLONE FRONT
+        ------------------------------------------------- */
+
+        const frontClone =
+            front.cloneNode(true);
+
+
+        frontClone.style.position =
+            "relative";
+
+        frontClone.style.left =
+            "0";
+
+        frontClone.style.top =
+            "0";
+
+        frontClone.style.width =
+            `${cardWidth}px`;
+
+        frontClone.style.height =
+            `${cardHeight}px`;
+
+        frontClone.style.transform =
+            "none";
+
+        frontClone.style.transformStyle =
+            "flat";
+
+        frontClone.style.backfaceVisibility =
+            "visible";
+
+        frontClone.style.webkitBackfaceVisibility =
+            "visible";
+
+        frontClone.style.visibility =
+            "visible";
+
+        frontClone.style.display =
+            "block";
+
+        frontClone.style.opacity =
+            "1";
+
+        frontClone.style.flex =
+            "0 0 auto";
+
+
+        /* -------------------------------------------------
+           CLONE BACK
+        ------------------------------------------------- */
+
+        const backClone =
+            back.cloneNode(true);
+
+
+        backClone.style.position =
+            "relative";
+
+        backClone.style.left =
+            "0";
+
+        backClone.style.top =
+            "0";
+
+        backClone.style.width =
+            `${cardWidth}px`;
+
+        backClone.style.height =
+            `${cardHeight}px`;
+
+        /* IMPORTANT:
+           Remove the 180deg flip for export
+        */
+
+        backClone.style.transform =
+            "none";
+
+        backClone.style.transformStyle =
+            "flat";
+
+        backClone.style.backfaceVisibility =
+            "visible";
+
+        backClone.style.webkitBackfaceVisibility =
+            "visible";
+
+        backClone.style.visibility =
+            "visible";
+
+        backClone.style.display =
+            "block";
+
+        backClone.style.opacity =
+            "1";
+
+        backClone.style.flex =
+            "0 0 auto";
+
+
+        /* -------------------------------------------------
+           ADD BOTH SIDES
+        ------------------------------------------------- */
+
+        exportContainer.appendChild(
+            frontClone
+        );
+
+        exportContainer.appendChild(
+            backClone
+        );
+
+
+        document.body.appendChild(
+            exportContainer
+        );
+
+
+        /* -------------------------------------------------
+           COPY QR CANVAS DATA
+           QRCodeJS may use canvas.
+        ------------------------------------------------- */
+
+        const originalCanvases =
+            back.querySelectorAll("canvas");
+
+        const clonedCanvases =
+            backClone.querySelectorAll("canvas");
+
+
+        originalCanvases.forEach(
+            (sourceCanvas, index) => {
+
+                const targetCanvas =
+                    clonedCanvases[index];
+
+                if (!targetCanvas) {
+                    return;
+                }
+
+                targetCanvas.width =
+                    sourceCanvas.width;
+
+                targetCanvas.height =
+                    sourceCanvas.height;
+
+
+                const ctx =
+                    targetCanvas.getContext("2d");
+
+
+                if (ctx) {
+
+                    ctx.drawImage(
+                        sourceCanvas,
+                        0,
+                        0
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* -------------------------------------------------
+           COPY QR IMAGES IF PRESENT
+        ------------------------------------------------- */
+
+        const originalImages =
+            back.querySelectorAll("img");
+
+        const clonedImages =
+            backClone.querySelectorAll("img");
+
+
+        originalImages.forEach(
+            (sourceImg, index) => {
+
+                const targetImg =
+                    clonedImages[index];
+
+                if (!targetImg) {
+                    return;
+                }
+
+                targetImg.src =
+                    sourceImg.src;
+
+            }
+        );
+
+
+        /* -------------------------------------------------
+           SMALL DELAY FOR RENDERING
+        ------------------------------------------------- */
+
+        await new Promise(
+            resolve =>
+                setTimeout(resolve, 300)
+        );
+
+
+        /* -------------------------------------------------
+           CREATE COMBINED CANVAS
+        ------------------------------------------------- */
+
         const canvas =
             await html2canvas(
-                card,
+                exportContainer,
                 {
 
                     scale: 3,
@@ -516,17 +803,26 @@ async function downloadCard() {
                     backgroundColor:
                         null,
 
-                    logging: false
+                    logging: false,
+
+                    imageTimeout: 15000
 
                 }
             );
 
 
-        const link =
-            document.createElement(
-                "a"
-            );
+        /* -------------------------------------------------
+           REMOVE TEMPORARY CONTAINER
+        ------------------------------------------------- */
 
+        document.body.removeChild(
+            exportContainer
+        );
+
+
+        /* -------------------------------------------------
+           FILE NAME
+        ------------------------------------------------- */
 
         const safeName =
             (
@@ -537,11 +833,23 @@ async function downloadCard() {
             .replace(
                 /[^a-z0-9]+/gi,
                 "-"
+            )
+            .replace(
+                /^-+|-+$/g,
+                ""
             );
 
 
+        /* -------------------------------------------------
+           DOWNLOAD
+        ------------------------------------------------- */
+
+        const link =
+            document.createElement("a");
+
+
         link.download =
-            `${safeName}-HHGOA26.png`;
+            `${safeName}-HHGOA26-FRONT-BACK.png`;
 
 
         link.href =
@@ -556,23 +864,47 @@ async function downloadCard() {
     } catch (error) {
 
         console.error(
+            "Download error:",
             error
         );
 
 
+        /* Make sure temporary container
+           is removed if something fails */
+
+        const temp =
+            document.querySelector(
+                'body > div[style*="-100000px"]'
+            );
+
+
+        if (temp) {
+            temp.remove();
+        }
+
+
         alert(
-            "Download failed. If an external theme image is blocking export, save the theme images locally in your assets folder."
+            "Download failed. Please try again."
         );
 
     }
 
 
-    card.style.transform =
-        originalTransform;
+    /* -----------------------------------------------------
+       RESTORE ORIGINAL FLIP STATE
+    ----------------------------------------------------- */
+
+    if (wasFlipped) {
+
+        showBack();
+
+    } else {
+
+        showFront();
+
+    }
 
 }
-
-
 /* =========================================================
    SHARE TO X
 ========================================================= */
