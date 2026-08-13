@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HHGOA26 — FrameInGoa</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- QR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- Screenshot / Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
+
+<header class="topbar" style="
+    background: rgba(3, 39, 0, 0.18);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(224, 184, 63, 0.25);
+"">
+
+    <div class="brand">
+
+        <div class="brand-palm">
+            🌴
+        </div>
+
+        <div class="brand-text">
+
+            <div class="brand-small">
+                HACKER HOUSE
+            </div>
+
+            <div class="brand-big">
+                GOA<span>'26</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav class="navigation">
+
+        <button
+            class="nav-btn active"
+            onclick="goHome()"
+        >
+            HOME
+        </button>
+
+        <button
+            class="nav-btn create-btn"
+            onclick="goCreate()"
+        >
+            CREATE ID
+        </button>
+
+        <button
+            class="nav-btn"
+            onclick="showAbout()"
+        >
+            ABOUT
+        </button>
+
+        <button
+            class="share-top"
+            onclick="shareCard()"
+        >
+            SHARE
+            <span>⌯</span>
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+
+<section class="hero" id="home">
+
+
+    <div class="hero-overlay"></div>
+
+
+    <!-- Decorative palms -->
+
+    <div class="hero-palm palm-left">
+        🌴
+    </div>
+
+    <div class="hero-palm palm-right">
+        🌴
+    </div>
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-eyebrow">
+
+            <span></span>
+
+            HACKER HOUSE GOA 2026
+
+            <span></span>
+
+        </div>
+
+
+        <h1>
+
+
+
+            <strong>
+             HACKER HOUSE GOA26'
+            </strong>
+
+        </h1>
+
+
+        <p>
+
+            Build. Ship. Launch.
+            <br class="mobile-break">
+            This is your Goa story.
+
+        </p>
+
+
+        <!-- Front / Back -->
+
+        <div class="flip-controls">
+
+            <button
+                id="frontBtn"
+                class="flip-btn active"
+                onclick="showFront()"
+            >
+                FRONT
+            </button>
+
+            <button
+                id="backBtn"
+                class="flip-btn"
+                onclick="showBack()"
+            >
+                BACK
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         CARD
+    ================================================= -->
+
+    <section class="card-section">
+
+
+        <div
+            class="card-wrapper"
+            id="downloadCard"
+        >
+
+
+            <div
+                class="id-card"
+                id="idCard"
+            >
+
+
+                <!-- ================= FRONT ================= -->
+
+                <div class="card-face card-front">
+
+
+                    <div class="card-noise"></div>
+
+
+                    <div class="perforation"></div>
+
+
+                    <!-- Header -->
+
+                    <div class="card-header">
+
+
+                        <div class="location">
+
+                            <div class="mini-palm">
+                                🌴
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    GOA, INDIA
+                                </strong>
+
+                                <small>
+                                    FRAMEIN GOA
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="event-title">
+
+                            <div class="hacker-house">
+                                HACKER HOUSE
+                            </div>
+
+                            <div class="goa-title">
+                                GOA<span>'26</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="event-date">
+
+                            <strong>
+                                28–31 OCT 2026
+                            </strong>
+
+                            <small>
+                                BUILDER RESIDENCY
+                            </small>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="gold-line"></div>
+
+
+                    <!-- Hero -->
+
+                    <div class="card-hero">
+
+
+                        <div class="round-badge badge-left">
+
+                            <span>
+                                GOA
+                            </span>
+
+                            <strong>
+                                VIBES
+                            </strong>
+
+                            <small>
+                                CODE & BUILD
+                            </small>
+
+                        </div>
+
+
+                        <div class="goa-sticker">
+
+                            <strong>
+                                GOA
+                            </strong>
+
+                            <span>
+                                VIBES
+                            </span>
+
+                            <small>
+                                ONLY
+                            </small>
+
+                            <div>
+                                〰〰〰
+                            </div>
+
+                        </div>
+
+
+                        <!-- Profile -->
+
+                        <div class="profile-frame">
+
+                            <div class="profile-ring">
+
+                                <img
+                                    id="profileImage"
+                                    src=""
+                                    alt="Profile"
+                                >
+
+                                <div
+                                    id="profilePlaceholder"
+                                    class="profile-placeholder"
+                                >
+                                    UPLOAD<br>
+                                    PHOTO
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="card-palm palm-one">
+                            🌴
+                        </div>
+
+                        <div class="card-palm palm-two">
+                            🌴
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Identity -->
+
+                    <div class="identity">
+
+                        <h2 id="cardName">
+                            YOUR NAME
+                        </h2>
+
+                    </div>
+
+
+                    <!-- Middle Goa art -->
+
+                    <div class="middle-art">
+
+                        <div class="sun">
+                            ☀
+                        </div>
+
+                        <div class="wave-line">
+                            〰〰〰〰〰〰〰〰〰
+                        </div>
+
+                    </div>
+
+
+                    <!-- Info -->
+
+                    <div class="profile-info">
+
+
+                        <div class="info-block">
+
+                            <span>
+                                STACK / ROLE
+                            </span>
+
+                            <strong id="cardRole">
+                                FULL STACK DEVELOPER
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Scooter -->
+
+                    <div class="scooter">
+                        🛵
+                    </div>
+
+
+                    <!-- Bottom badge -->
+
+                    <div class="bottom-badge">
+
+                        <div class="badge-circle">
+
+                            <span>
+                                GOA MODE
+                            </span>
+
+                            <strong>
+                                ON
+                            </strong>
+
+                            <small>
+                                🌴
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Barcode -->
+
+                    <div class="barcode-area">
+
+                        <div class="barcode">
+
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-footer">
+
+                        <span>
+                            #FrameInGoa
+                        </span>
+
+                        <span>
+                            HHGOA26 / FIELD LOG
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ================= BACK ================= -->
+
+                <div class="card-face card-back">
+
+
+                    <div class="perforation"></div>
+
+
+                    <div class="back-content">
+
+
+                        <div class="back-logo">
+
+                            HACKER HOUSE
+
+                            <span>
+                                GOA'26
+                            </span>
+
+                        </div>
+
+
+                        <div class="back-year">
+                            28 — 31 OCT 2026
+                        </div>
+
+
+                        <div class="back-message">
+
+                            <span>
+                                BUILDER PROFILE
+                            </span>
+
+                            <h2>
+                                247
+                            </h2>
+
+                            <!-- NEW -->
+                            <div class="back-studio">
+                                STUDIO
+                            </div>
+
+                            <p>
+                                BUILDERS • ONE HOUSE • ONE RHYTHM
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="qr-container"
+                            id="qrContainer"
+                            onclick="openProfile()"
+                            title="Open profile"
+                        >
+
+                            <div id="qrcode"></div>
+
+                            <p>
+                                TAP TO OPEN PROFILE
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="back-url"
+                            id="backUrl"
+                        >
+                            HHGOA26.NETLIFY.APP
+                        </div>
+
+
+                        <div class="back-footer">
+
+                            <span>
+                                GOA, INDIA
+                            </span>
+
+                            <span>
+                                #FrameInGoa
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="flip-hint">
+
+            <span>
+                ↻
+            </span>
+
+            Click card to flip
+
+        </div>
+
+
+    </section>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CREATE SECTION
+===================================================== -->
+
+<section
+    class="create-section"
+    id="create"
+>
+
+
+    <div class="creator-card">
+
+
+        <div class="creator-heading">
+
+            <h2>
+                CREATE YOUR BUILDER ID
+            </h2>
+
+            <p>
+                Fill your details and generate your custom card
+            </p>
+
+        </div>
+
+
+        <div class="creator-layout">
+
+
+            <!-- ================= FORM ================= -->
+
+            <div class="form-area">
+
+
+                <div class="form-grid">
+
+
+                    <div class="field">
+
+                        <label>
+                            YOUR NAME
+                        </label>
+
+                        <input
+                            id="nameInput"
+                            type="text"
+                            placeholder="Your Name"
+                            value="Your Name"
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            ROLE / STACK
+                        </label>
+
+                        <input
+                            id="roleInput"
+                            type="text"
+                            placeholder="Full Stack Developer"
+                            value="Full Stack Developer"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Upload -->
+
+                <div class="field upload-field">
+
+                    <label>
+                        UPLOAD PHOTO
+                    </label>
+
+
+                    <label
+                        class="upload-box"
+                        for="photoInput"
+                    >
+
+                        <div class="upload-preview">
+
+                            <img
+                                id="uploadPreview"
+                                src=""
+                                alt=""
+                            >
+
+                            <span id="uploadIcon">
+                                👤
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Click to upload
+                            </strong>
+
+                            <span>
+                                or drag & drop
+                            </span>
+
+                            <small>
+                                PNG, JPG up to 5MB
+                            </small>
+
+                        </div>
+
+                    </label>
+
+
+                    <input
+                        id="photoInput"
+                        type="file"
+                        accept="image/png,image/jpeg,image/webp"
+                        hidden
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= THEMES ================= -->
+
+            <div class="theme-area">
+
+
+                <label class="theme-title">
+                    CHOOSE THEME
+                </label>
+
+
+                <div class="theme-grid">
+
+
+                    <button
+                        class="theme-btn active"
+                        data-theme="sunset"
+                    >
+
+                        <span
+                            class="theme-preview sunset-preview"
+                        ></span>
+
+                        <span>
+                            Sunset
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="theme-btn"
+                        data-theme="ocean"
+                    >
+
+                        <span
+                            class="theme-preview ocean-preview"
+                        ></span>
+
+                        <span>
+                            Ocean
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="theme-btn"
+                        data-theme="monsoon"
+                    >
+
+                        <span
+                            class="theme-preview monsoon-preview"
+                        ></span>
+
+                        <span>
+                            Monsoon
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="theme-btn"
+                        data-theme="carnival"
+                    >
+
+                        <span
+                            class="theme-preview carnival-preview"
+                        ></span>
+
+                        <span>
+                            Carnival
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- Actions -->
+
+        <div class="action-buttons">
+
+
+            <button
+                class="primary-btn"
+                onclick="downloadCard()"
+            >
+                DOWNLOAD CARD
+                <span>↓</span>
+            </button>
+
+
+            <button
+                class="outline-btn"
+                onclick="shareCard()"
+            >
+                SHARE CARD
+                <span>⌯</span>
+            </button>
+
+
+            <button
+                class="outline-btn"
+                onclick="flipCard()"
+            >
+                FLIP CARD
+                <span>⟳</span>
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="site-footer">
+
+
+    <div>
+        GOA, INDIA
+    </div>
+
+
+    <div>
+        BUILDERS • COMMUNITY • CODE • COAST
+    </div>
+
+
+    <div>
+        28–31 OCT 2026
+    </div>
+
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     ABOUT MODAL
+===================================================== -->
+
+<div
+    id="aboutModal"
+    class="modal"
+>
+
+
+    <div class="modal-box">
+
+
+        <button
+            class="close-modal"
+            onclick="closeAbout()"
+        >
+            ×
+        </button>
+
+
+        <h2>
+            HACKER HOUSE GOA'26
+        </h2>
+
+
+        <p>
+
+            A builder-focused residency in Goa where
+            developers, designers, creators and founders
+            come together to build and ship.
+
+        </p>
+
+
+        <div class="modal-details">
+
+            <span>
+                📍 GOA, INDIA
+            </span>
+
+            <span>
+                📅 28–31 OCT 2026
+            </span>
+
+            <span>
+                🚀 BUILD • SHIP • LAUNCH
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2645 @@
+/* =========================================================
+   HHGOA26
+   FRAMEIN GOA
+   PREMIUM VINTAGE GOA BUILDER CARD
+========================================================= */
+
+:root {
+
+    --green: #063d2f;
+    --green-dark: #03271f;
+    --green-light: #0c5943;
+
+    --cream: #f4e5b9;
+    --cream-light: #fff4cf;
+
+    --gold: #e0b83f;
+    --gold-light: #f4d86b;
+
+    --red: #c52d35;
+    --red-dark: #8f1d25;
+
+    --black: #10211b;
+
+    --white: #fffdf3;
+
+    --bg-image:
+        url("https://pbs.twimg.com/media/HOt2L4LaAAAAxlR.jpg");
+
+    --theme-image:
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb74E8mIo9tthbRZPxuWQENiKeBN5ZUbH3KT06auYVog&s");
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: "Poppins", sans-serif;
+
+    color: var(--white);
+
+    overflow-x: hidden;
+
+    background-color: var(--green-dark);
+
+}
+
+
+/* =========================================================
+   FULL PAGE GOA BACKGROUND
+========================================================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -5;
+
+    background-image:
+        linear-gradient(
+            rgba(3, 35, 27, .38),
+            rgba(3, 35, 27, .55)
+        ),
+        var(--bg-image);
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    transform: scale(1.03);
+
+}
+
+
+/* =========================================================
+   TEXTURE OVERLAY
+========================================================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -4;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.5) 1px,
+            transparent 1px
+        );
+
+    background-size: 5px 5px;
+
+    mix-blend-mode: overlay;
+
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    min-height: 100px;
+
+    padding: 12px 6%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,35,27,.97),
+            rgba(3,47,36,.94)
+        );
+
+    border-bottom: 1px solid rgba(224,184,63,.25);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.22);
+
+    backdrop-filter: blur(14px);
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand-palm {
+
+    font-size: 55px;
+
+    line-height: .8;
+
+    filter:
+        sepia(1)
+        saturate(2)
+        brightness(1.15);
+
+}
+
+
+.brand-text {
+    line-height: .85;
+}
+
+
+.brand-small {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: var(--gold);
+
+}
+
+
+.brand-big {
+
+    margin-top: 3px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 44px;
+
+    font-weight: 800;
+
+    color: var(--gold);
+
+}
+
+
+.brand-big span {
+    color: var(--red);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.nav-btn,
+.share-top {
+
+    min-width: 82px;
+
+    height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 9px;
+
+    border: 1px solid var(--gold);
+
+    background: transparent;
+
+    color: var(--gold-light);
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+}
+
+
+.nav-btn:hover,
+.nav-btn.active {
+
+    background: var(--gold-light);
+
+    color: var(--green-dark);
+
+    transform: translateY(-1px);
+
+}
+
+
+.share-top {
+
+    border: none;
+
+    min-width: auto;
+
+    color: var(--gold-light);
+
+}
+
+
+.share-top:hover {
+
+    background: transparent;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    min-height: 900px;
+
+    /*
+       CHANGED:
+       More top margin/space below navigation.
+    */
+
+    padding-top: 75px;
+
+    padding-bottom: 40px;
+
+    overflow: hidden;
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            rgba(246,220,155,.05),
+            rgba(4,40,30,.15)
+        );
+
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+}
+
+
+.hero-eyebrow {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    color: var(--black);
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    margin-top: 5px;
+
+}
+
+
+.hero-eyebrow span {
+
+    width: 30px;
+
+    height: 2px;
+
+    background: var(--black);
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero h1 {
+
+    margin-top: 4px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(
+        65px,
+        8vw,
+        120px
+    );
+
+    line-height: .82;
+
+    letter-spacing: -3px;
+
+    color: #082b21;
+
+    text-shadow:
+        2px 2px rgba(255,240,186,.5);
+
+}
+
+
+.hero h1 strong {
+
+    display: block;
+
+    font-size: 1.05em;
+
+    color: var(--red);
+
+}
+
+
+/* =========================================================
+   HERO SUBTITLE
+========================================================= */
+
+.hero-content > p {
+
+    margin-top: 18px;
+
+    color: #17261e;
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+}
+
+
+/* =========================================================
+   FLIP CONTROLS
+========================================================= */
+
+.flip-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 22px;
+
+}
+
+
+.flip-btn {
+
+    width: 108px;
+
+    height: 42px;
+
+    border: none;
+
+    background: var(--green);
+
+    color: var(--cream);
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+.flip-btn:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+
+.flip-btn:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+
+.flip-btn.active {
+
+    background: var(--gold);
+
+    color: var(--black);
+
+}
+
+
+/* =========================================================
+   CARD SECTION
+========================================================= */
+
+.card-section {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card-wrapper {
+
+    width: min(
+        92vw,
+        600px
+    );
+
+    perspective: 1800px;
+
+    position: relative;
+
+}
+
+
+.id-card {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: .72;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+
+    cursor: pointer;
+
+}
+
+
+.id-card.flipped {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================================
+   CARD FACE
+========================================================= */
+
+.card-face {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    backface-visibility: hidden;
+
+    color: var(--black);
+
+    border: 8px solid var(--green);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,.45),
+        0 0 0 2px var(--gold);
+
+    /*
+       CHANGED:
+       Theme image is now CLEAR.
+       Previously .76 made it very white.
+    */
+
+    background-image:
+        linear-gradient(
+            rgba(247,231,188,.14),
+            rgba(247,231,188,.14)
+        ),
+        var(--theme-image);
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.card-front {
+
+    background-image:
+        linear-gradient(
+            rgba(247,231,188,.14),
+            rgba(247,231,188,.14)
+        ),
+        var(--theme-image);
+
+}
+
+
+.card-back {
+
+    transform: rotateY(180deg);
+
+    background-image:
+        linear-gradient(
+            rgba(247,231,188,.14),
+            rgba(247,231,188,.14)
+        ),
+        var(--theme-image);
+
+}
+
+
+/* =========================================================
+   CARD TEXTURE
+========================================================= */
+
+.card-noise {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: .10;
+
+    background-image:
+        radial-gradient(
+            rgba(0,0,0,.4) 1px,
+            transparent 1px
+        );
+
+    background-size: 4px 4px;
+
+    mix-blend-mode: multiply;
+
+}
+
+
+/* =========================================================
+   PERFORATED BORDER
+========================================================= */
+
+.perforation {
+
+    position: absolute;
+
+    inset: 6px;
+
+    border: 3px dotted var(--green);
+
+    opacity: .9;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-header {
+
+    height: 12%;
+
+    padding: 10px 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1.8fr
+        1fr;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 10;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3,57,43,.98),
+            rgba(4,73,55,.94)
+        );
+
+    color: var(--cream);
+
+}
+
+
+.location {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+.mini-palm {
+    font-size: 24px;
+}
+
+
+.location strong {
+
+    display: block;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.location small {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 5px;
+
+    color: var(--gold-light);
+
+}
+
+
+.event-title {
+    text-align: center;
+}
+
+
+.hacker-house {
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(
+        17px,
+        3vw,
+        30px
+    );
+
+    font-weight: 800;
+
+    color: var(--gold-light);
+
+}
+
+
+.goa-title {
+
+    margin-top: -2px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    color: var(--red);
+
+}
+
+
+.goa-title span {
+    color: var(--gold);
+}
+
+
+.event-date {
+    text-align: right;
+}
+
+
+.event-date strong {
+
+    display: block;
+
+    font-size: 8px;
+
+}
+
+
+.event-date small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 5px;
+
+}
+
+
+/* =========================================================
+   GOLD LINE
+========================================================= */
+
+.gold-line {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 88%;
+
+    height: 2px;
+
+    margin: 0 auto;
+
+    background: var(--gold);
+
+}
+
+
+/* =========================================================
+   CARD HERO
+========================================================= */
+
+.card-hero {
+
+    height: 43%;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   PROFILE FRAME
+========================================================= */
+
+.profile-frame {
+
+    width: 54%;
+
+    aspect-ratio: 1;
+
+    padding: 8px;
+
+    border-radius: 50%;
+
+    background: var(--cream);
+
+    border: 7px solid var(--red);
+
+    box-shadow:
+        0 0 0 6px rgba(255,255,255,.75),
+        0 0 0 10px var(--gold);
+
+    position: relative;
+
+    z-index: 20;
+
+}
+
+
+.profile-ring {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: #eadfbd;
+
+    position: relative;
+
+}
+
+
+.profile-ring img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+
+}
+
+
+.profile-placeholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    color: #6d5c37;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.round-badge {
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 2px solid var(--green);
+
+    color: var(--green);
+
+    background: rgba(249,231,183,.92);
+
+    z-index: 30;
+
+    transform: rotate(-10deg);
+
+}
+
+
+.badge-left {
+
+    left: 7%;
+
+    top: 7%;
+
+}
+
+
+.round-badge span {
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+}
+
+
+.round-badge strong {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+}
+
+
+.round-badge small {
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   GOA STICKER
+========================================================= */
+
+.goa-sticker {
+
+    position: absolute;
+
+    right: 6%;
+
+    top: 12%;
+
+    width: 75px;
+
+    padding: 9px;
+
+    text-align: center;
+
+    border: 2px solid var(--green);
+
+    border-radius: 12px;
+
+    color: var(--green);
+
+    background: rgba(249,231,183,.94);
+
+    transform: rotate(-8deg);
+
+    z-index: 30;
+
+}
+
+
+.goa-sticker strong {
+
+    display: block;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 17px;
+
+}
+
+
+.goa-sticker span {
+
+    display: block;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.goa-sticker small {
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   CARD PALMS
+========================================================= */
+
+.card-palm {
+
+    position: absolute;
+
+    font-size: 48px;
+
+    opacity: .9;
+
+    z-index: 5;
+
+}
+
+
+.palm-one {
+
+    left: 1%;
+
+    bottom: 0;
+
+    transform: rotate(-10deg);
+
+}
+
+
+.palm-two {
+
+    right: 1%;
+
+    bottom: 0;
+
+    transform: rotate(10deg);
+
+}
+
+
+/* =========================================================
+   IDENTITY
+========================================================= */
+
+.identity {
+
+    position: relative;
+
+    z-index: 30;
+
+    text-align: center;
+
+}
+
+
+.identity h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(
+        22px,
+        5vw,
+        35px
+    );
+
+    font-weight: 800;
+
+    color: var(--black);
+
+}
+
+
+/* =========================================================
+   MIDDLE ART
+========================================================= */
+
+.middle-art {
+
+    height: 9%;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.sun {
+
+    text-align: center;
+
+    font-size: 43px;
+
+    color: #d89223;
+
+    opacity: .75;
+
+}
+
+
+.wave-line {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: var(--green);
+
+    font-size: 17px;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   PROFILE INFO
+========================================================= */
+
+.profile-info {
+
+    width: 75%;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 30;
+
+}
+
+
+.info-block span {
+
+    display: block;
+
+    color: #826b34;
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.info-block strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--black);
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   SCOOTER
+========================================================= */
+
+.scooter {
+
+    position: absolute;
+
+    right: 6%;
+
+    bottom: 14%;
+
+    font-size: 48px;
+
+    z-index: 35;
+
+    transform: rotate(-3deg);
+
+}
+
+
+/* =========================================================
+   BOTTOM BADGE
+========================================================= */
+
+.bottom-badge {
+
+    position: absolute;
+
+    right: 7%;
+
+    bottom: 6%;
+
+    z-index: 40;
+
+}
+
+
+.badge-circle {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid var(--green);
+
+    background: rgba(249,231,183,.96);
+
+    color: var(--green);
+
+    transform: rotate(8deg);
+
+}
+
+
+.badge-circle span {
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+}
+
+
+.badge-circle strong {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+}
+
+
+.badge-circle small {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   BARCODE
+========================================================= */
+
+.barcode-area {
+
+    position: absolute;
+
+    left: 7%;
+
+    bottom: 2.8%;
+
+    width: 48%;
+
+    height: 5.5%;
+
+    z-index: 40;
+
+}
+
+
+.barcode {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 2px;
+
+    overflow: hidden;
+
+}
+
+
+.barcode i {
+
+    width: 4px;
+
+    background: var(--green);
+
+}
+
+
+.barcode i:nth-child(2n) {
+    width: 2px;
+}
+
+
+.barcode i:nth-child(3n) {
+    width: 7px;
+}
+
+
+.barcode i:nth-child(4n) {
+    width: 3px;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.card-footer {
+
+    position: absolute;
+
+    left: 7%;
+
+    right: 7%;
+
+    bottom: .8%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    color: var(--green);
+
+    z-index: 50;
+
+}
+
+
+/* =========================================================
+   BACK CARD
+========================================================= */
+
+.back-content {
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+
+.back-logo {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    color: var(--gold);
+
+}
+
+
+.back-logo span {
+    color: var(--red);
+}
+
+
+.back-year {
+
+    margin-top: 5px;
+
+    color: var(--green);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+.back-message {
+
+    margin-top: 55px;
+
+}
+
+
+.back-message span {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #806d3c;
+
+}
+
+
+.back-message h2 {
+
+    margin: 5px 0 0;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 75px;
+
+    line-height: .9;
+
+    color: var(--green);
+
+}
+
+
+/* =========================================================
+   NEW: STUDIO TEXT UNDER 247
+========================================================= */
+
+.back-studio {
+
+    margin-top: 4px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    color: var(--red);
+
+}
+
+
+.back-message p {
+
+    margin-top: 7px;
+
+    color: var(--red);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+
+/* =========================================================
+   QR
+========================================================= */
+
+.qr-container {
+
+    margin-top: 30px;
+
+    padding: 12px;
+
+    background: white;
+
+    border: 4px solid var(--green);
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.qr-container:hover {
+    transform: scale(1.04);
+}
+
+
+#qrcode {
+
+    width: 130px;
+
+    height: 130px;
+
+}
+
+
+#qrcode img {
+
+    width: 130px !important;
+
+    height: 130px !important;
+
+}
+
+
+.qr-container p {
+
+    margin-top: 7px;
+
+    color: var(--green);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.back-url {
+
+    margin-top: 14px;
+
+    color: var(--green);
+
+    font-family: monospace;
+
+    font-size: 9px;
+
+}
+
+
+.back-footer {
+
+    position: absolute;
+
+    left: 30px;
+
+    right: 30px;
+
+    bottom: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: var(--green);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   FLIP HINT
+========================================================= */
+
+.flip-hint {
+
+    position: absolute;
+
+    right: -150px;
+
+    bottom: 25%;
+
+    width: 140px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+
+.flip-hint span {
+
+    display: block;
+
+    font-size: 35px;
+
+}
+
+
+/* =========================================================
+   CREATE SECTION
+========================================================= */
+
+.create-section {
+
+    position: relative;
+
+    padding: 20px 5% 70px;
+
+}
+
+
+.creator-card {
+
+    width: min(
+        1150px,
+        100%
+    );
+
+    margin: auto;
+
+    padding: 32px 42px;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            rgba(2,40,30,.94),
+            rgba(2,42,31,.91)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+
+    backdrop-filter: blur(15px);
+
+}
+
+
+/* =========================================================
+   CREATOR HEADING
+========================================================= */
+
+.creator-heading {
+    text-align: center;
+}
+
+
+.creator-heading h2 {
+
+    color: var(--cream-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 27px;
+
+}
+
+
+.creator-heading p {
+
+    margin-top: 4px;
+
+    color: #e5d8ad;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================================
+   CREATOR LAYOUT
+========================================================= */
+
+.creator-layout {
+
+    display: grid;
+
+    grid-template-columns: 1.2fr .9fr;
+
+    gap: 35px;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 17px 20px;
+
+}
+
+
+.field label,
+.theme-title {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--cream-light);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.field input {
+
+    width: 100%;
+
+    height: 43px;
+
+    padding: 0 14px;
+
+    border: 1px solid rgba(224,184,63,.45);
+
+    border-radius: 9px;
+
+    background: rgba(0,0,0,.18);
+
+    color: white;
+
+    outline: none;
+
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+.field input:focus {
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 2px rgba(224,184,63,.12);
+
+}
+
+
+.field input::placeholder {
+    color: rgba(255,255,255,.45);
+}
+
+
+/* =========================================================
+   UPLOAD
+========================================================= */
+
+.upload-field {
+    margin-top: 22px;
+}
+
+
+.upload-box {
+
+    min-height: 92px;
+
+    border: 1px dashed rgba(224,184,63,.65);
+
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.upload-box:hover {
+    background: rgba(224,184,63,.06);
+}
+
+
+.upload-preview {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: var(--cream);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+
+.upload-preview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: none;
+
+}
+
+
+.upload-preview span {
+    font-size: 25px;
+}
+
+
+.upload-box strong {
+
+    display: block;
+
+    color: var(--cream-light);
+
+    font-size: 13px;
+
+}
+
+
+.upload-box > div:last-child span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: #e6dcbf;
+
+    font-size: 11px;
+
+}
+
+
+.upload-box small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #c8bd9d;
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   THEMES
+========================================================= */
+
+.theme-area {
+
+    padding-left: 30px;
+
+    border-left: 1px solid rgba(224,184,63,.45);
+
+}
+
+
+.theme-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 13px;
+
+}
+
+
+.theme-btn {
+
+    padding: 0;
+
+    border: 2px solid transparent;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    position: relative;
+
+}
+
+
+.theme-btn.active {
+
+    border-color: var(--gold);
+
+    box-shadow:
+        0 0 0 2px rgba(224,184,63,.15);
+
+}
+
+
+.theme-preview {
+
+    width: 100%;
+
+    height: 100px;
+
+    display: block;
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.theme-btn > span:last-child {
+
+    position: absolute;
+
+    bottom: 7px;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 2px 5px black;
+
+}
+
+
+.sunset-preview {
+
+    background-image:
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb74E8mIo9tthbRZPxuWQENiKeBN5ZUbH3KT06auYVog&s");
+
+}
+
+
+.ocean-preview {
+
+    background-image:
+        url("https://pbs.twimg.com/media/HPIiasea8AI61GB.jpg");
+
+}
+
+
+.monsoon-preview {
+
+    background-image:
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRROVS71pLC2DfZVwkebtMIKT-pkq1BQ49aJKc_c8582C-Qlz8t_D6aa3Zb&s=10");
+
+}
+
+
+.carnival-preview {
+
+    background-image:
+        url("https://hhgoa.com/assets/details.png");
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.action-buttons {
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    gap: 15px;
+
+}
+
+
+.action-buttons button {
+
+    min-height: 45px;
+
+    border-radius: 9px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+
+.primary-btn {
+
+    border: none;
+
+    background: var(--gold);
+
+    color: var(--green-dark);
+
+}
+
+
+.primary-btn:hover {
+
+    background: var(--gold-light);
+
+    transform: translateY(-2px);
+
+}
+
+
+.outline-btn {
+
+    border: 1px solid var(--gold);
+
+    background: transparent;
+
+    color: var(--cream-light);
+
+}
+
+
+.outline-btn:hover {
+
+    background: rgba(224,184,63,.1);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+
+    min-height: 80px;
+
+    padding: 25px 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: rgba(2,32,24,.95);
+
+    color: var(--cream);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    border-top: 1px solid rgba(224,184,63,.2);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.7);
+
+    backdrop-filter: blur(10px);
+
+}
+
+
+.modal.show {
+    display: flex;
+}
+
+
+.modal-box {
+
+    position: relative;
+
+    width: min(
+        500px,
+        95vw
+    );
+
+    padding: 40px;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 18px;
+
+    background: var(--green-dark);
+
+    color: var(--cream);
+
+    text-align: center;
+
+}
+
+
+.modal-box h2 {
+
+    font-family: "Cinzel", serif;
+
+    color: var(--gold);
+
+}
+
+
+.modal-box p {
+
+    margin-top: 15px;
+
+    line-height: 1.7;
+
+    color: #ded3b4;
+
+}
+
+
+.modal-details {
+
+    margin-top: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    border: none;
+
+    background: none;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   HERO DECORATION
+========================================================= */
+
+.hero-palm {
+
+    position: absolute;
+
+    font-size: 130px;
+
+    opacity: .7;
+
+    z-index: 1;
+
+}
+
+
+.palm-left {
+
+    left: -30px;
+
+    top: 100px;
+
+    transform: rotate(-15deg);
+
+}
+
+
+.palm-right {
+
+    right: -30px;
+
+    top: 100px;
+
+    transform: rotate(15deg);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+
+    .topbar {
+
+        min-height: auto;
+
+        padding: 12px 18px;
+
+    }
+
+
+    .brand-palm {
+        font-size: 40px;
+    }
+
+
+    .brand-small {
+        font-size: 13px;
+    }
+
+
+    .brand-big {
+        font-size: 28px;
+    }
+
+
+    .navigation {
+        gap: 4px;
+    }
+
+
+    .nav-btn,
+    .share-top {
+
+        min-width: auto;
+
+        padding: 0 9px;
+
+        font-size: 9px;
+
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding-top: 55px;
+
+        padding-bottom: 50px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: clamp(
+            48px,
+            12vw,
+            80px
+        );
+
+    }
+
+
+    .hero-palm {
+        display: none;
+    }
+
+
+    .flip-hint {
+        display: none;
+    }
+
+
+    .creator-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .theme-area {
+
+        padding-left: 0;
+
+        border-left: none;
+
+        border-top: 1px solid rgba(224,184,63,.45);
+
+        padding-top: 25px;
+
+    }
+
+
+}
+
+
+@media (max-width: 600px) {
+
+
+    .topbar {
+
+        flex-direction: column;
+
+        gap: 12px;
+
+    }
+
+
+    .navigation {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+
+    .brand {
+        justify-content: center;
+    }
+
+
+    .hero-eyebrow {
+        font-size: 10px;
+    }
+
+
+    .hero-content > p {
+        font-size: 14px;
+    }
+
+
+    .card-wrapper {
+        width: 95vw;
+    }
+
+
+    .card-face {
+        border-width: 5px;
+    }
+
+
+    .card-header {
+        padding: 7px 11px;
+    }
+
+
+    .hacker-house {
+        font-size: 15px;
+    }
+
+
+    .goa-title {
+        font-size: 16px;
+    }
+
+
+    .event-date strong {
+        font-size: 6px;
+    }
+
+
+    .round-badge {
+
+        width: 58px;
+
+        height: 58px;
+
+    }
+
+
+    .goa-sticker {
+
+        width: 58px;
+
+        padding: 6px;
+
+    }
+
+
+    .goa-sticker strong {
+        font-size: 12px;
+    }
+
+
+    .profile-frame {
+
+        width: 55%;
+
+        border-width: 5px;
+
+        padding: 5px;
+
+    }
+
+
+    .scooter {
+        font-size: 32px;
+    }
+
+
+    .badge-circle {
+
+        width: 53px;
+
+        height: 53px;
+
+    }
+
+
+    .badge-circle strong {
+        font-size: 9px;
+    }
+
+
+    .profile-info {
+        width: 72%;
+    }
+
+
+    .info-block strong {
+        font-size: 7px;
+    }
+
+
+    .creator-card {
+        padding: 25px 18px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .theme-grid {
+        gap: 8px;
+    }
+
+
+    .theme-preview {
+        height: 85px;
+    }
+
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+
+    .site-footer {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: center;
+
+    }
+
+
+    .back-message h2 {
+        font-size: 60px;
+    }
+
+
+    .back-studio {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+}
+
+
+/* =========================================================
+   EXPORT
+========================================================= */
+
+.export-mode {
+
+    box-shadow: none !important;
+
+}
+
+
+.export-mode .perforation {
+    display: block;
+}
